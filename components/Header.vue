@@ -3,6 +3,13 @@
         <div class="logo-container">
             <img src="assets/logo.png" alt="Callisburg Church of Christ logo">
         </div>
+        <ul class="nav-list">
+            <li class="nav-item" v-for="(nav, index) of navData" :key="index">
+                <NuxtLink :to="nav.route">
+                    {{ nav.label }}
+                </NuxtLink>
+            </li>
+        </ul>
         <div class="mobile-nav-toggle" :class="{'toggled': navToggled}" @click="navToggled = !navToggled">
             <div class="line1"></div>
             <div class="line2"></div>
@@ -23,6 +30,9 @@
                 img {
                     width: 30rem;
                 }
+            }
+            .nav-list {
+                display: none;
             }
             .mobile-nav-toggle {
                 cursor: pointer;
@@ -48,6 +58,37 @@
                     }
                 }
             }
+        }
+    }
+    @media screen and (min-width: 768px) {
+        header {
+            padding: 3rem var(--tablet-x-padding);
+            .nav-list {
+                display: flex;
+                flex-direction: row;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                gap: 3rem;
+                a {
+                    text-decoration: none;
+                    font-size: 18px;
+                    font-family: var(--font-family-secondary);
+                    color: var(--color-primary);
+                    transition: var(--transition);
+                    &:hover {
+                        color: var(--color-secondary);
+                    }
+                }
+            }
+            .mobile-nav-toggle {
+                display: none;
+            }
+        }
+    }
+    @media screen and (min-width: 1440px) {
+        header {
+            padding: 2rem var(--desktop-x-padding);
         }
     }
 </style>
