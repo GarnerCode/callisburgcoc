@@ -1,5 +1,5 @@
 <template>
-    <section id="sermon">
+    <section data-aos="fade-up" id="sermon">
         <div class="section-header">
             <h2 class="text-highlight">Watch Last Sunday's Sermon</h2>
             <div class="header-row"></div>

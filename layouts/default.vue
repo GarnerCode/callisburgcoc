@@ -15,6 +15,7 @@
         --color-gray: #CAC0BF;
         --color-black: #1d1d1f;
         --color-white: #fbfbfd;
+        --color-alt-white: #e6e6e6;
         --font-family-primary: 'Roboto', sans-serif;
         --font-family-secondary: 'Roboto Condensed', sans-serif;
         --mobile-x-padding: 2rem;
@@ -23,6 +24,24 @@
         --border-radius: 5px;
         --transition: ease 0.3s;
         --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(200px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
     html {
         overflow-x: hidden;

@@ -5,7 +5,7 @@
         <img class="hero hero-desktop" src="assets/images/mobile/exterior.webp" alt="Callisburg Church exterior">
         <div class="landing-text">
             <div class="text">
-                <h1>Welcome to the<br/> <span class="text-highlight">Callisburg Church of Christ</span></h1>
+                <h1>Welcome to the<br/> <span>Callisburg Church of Christ</span></h1>
                 <p>We are a small country church with a large heart for the Lord and others. Our goal is to reach as many people with the message of Christ as we can from our little corner of the world. We would love to see you and invite you to come spend some time with us!</p>
                 <button class="button">Learn More</button>
             </div>
@@ -34,6 +34,8 @@
                 width: 100%;
                 box-shadow: var(--box-shadow);
                 border-radius: var(--border-radius);
+                opacity: 0;
+                animation: slideUp 0.5s 0.3s ease forwards;
             }
             .hero-tablet {
                 display: none;
@@ -46,6 +48,9 @@
                 flex-direction: column;
                 justify-content: space-between;
                 gap: 10rem;
+                opacity: 0;
+                transform: translateY(200px);
+                animation: slideUp 0.5s 0.5s ease forwards;
                 .text {
                     display: flex;
                     flex-direction: column;
@@ -56,12 +61,22 @@
             }
             h1 {
                 text-align: center;
+                span {
+                    color: var(--color-primary);
+                }
+            }
+            .button {
+                background-color: var(--color-primary);
+                color: var(--color-white);
             }
             .events {
                 display: flex;
                 flex-direction: column;
                 gap: 3rem;
                 margin-top: 7rem;
+                opacity: 0;
+                transform: translateY(200px);
+                animation: slideUp 0.5s 0.7s ease forwards;
                 .events-content {
                     display: grid;
                     grid-template-columns: 1fr 2fr;
@@ -77,6 +92,8 @@
                 }
                 .event-date {
                     font-style: italic;
+                    font-size: 14px;
+                    color: var(--color-black);
                 }
             }
         }
@@ -92,20 +109,28 @@
             }
             .landing-text {
                 gap: 0;
-                background-color: var(--color-white);
+                background-color: var(--color-primary);
                 box-shadow: var(--box-shadow);
                 position: absolute;
                 bottom: -250px;
                 width: 50%;
                 padding: 2rem;
                 border-radius: var(--border-radius);
-                border-top-left-radius: 0;
             }
             h1 {
                 text-align: left;
+                color: var(--color-white);
+                span {
+                    color: var(--color-white);
+                }
+            }
+            p {
+                color: var(--color-white);
             }
             .button {
                 margin: 0 auto;
+                background-color: var(--color-white);
+                color: var(--color-primary);
             }
             .events {
                 margin: 0;
@@ -126,6 +151,7 @@
             }
             .landing-text {
                 bottom: -75px;
+                left: -75px;
             }
             h1 {
                 text-align: left;
