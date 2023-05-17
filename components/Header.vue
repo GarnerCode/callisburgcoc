@@ -1,7 +1,10 @@
 <template>
     <header>
         <div class="logo-container">
-            <img src="assets/logo.png" alt="Callisburg Church of Christ logo">
+            <img src="assets/logo.svg" alt="Callisburg Church of Christ logo">
+            <div class="logo-text">
+                Callisburg<br/> Church of Christ
+            </div>
         </div>
         <ul class="nav-list">
             <li class="nav-item" v-for="(nav, index) of navData" :key="index">
@@ -26,9 +29,25 @@
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+            box-shadow: var(--box-shadow);
             .logo-container {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 1rem;
+                cursor: pointer;
                 img {
-                    width: 30rem;
+                    width: 3.5rem;
+                }
+                .logo-text {
+                    font-size: 20px;
+                    font-family: var(--font-family-secondary);
+                    transition: var(--transition);
+                }
+                &:hover {
+                    .logo-text {
+                        color: var(--color-primary);
+                    }
                 }
             }
             .nav-list {
@@ -63,6 +82,11 @@
     @media screen and (min-width: 768px) {
         header {
             padding: 3rem var(--tablet-x-padding);
+            .logo-container {
+                img {
+                    width: 3rem;
+                }
+            }
             .nav-list {
                 display: flex;
                 flex-direction: row;
@@ -89,6 +113,11 @@
     @media screen and (min-width: 1440px) {
         header {
             padding: 2rem var(--desktop-x-padding);
+            .logo-container {
+                img {
+                    width: 2rem;
+                }
+            }
         }
     }
 </style>

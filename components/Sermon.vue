@@ -43,6 +43,11 @@
                 width: 100%;
                 border-radius: var(--border-radius);
             }
+            .sermon-content {
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+            }
             .sermon-text {
                 font-style: italic;
             }
@@ -53,6 +58,7 @@
     }
     @media screen and (min-width: 768px) {
         #sermon {
+            margin-top: 250px;
             .section-header {
                 display: flex;
                 flex-direction: row;
@@ -77,6 +83,7 @@
     }
     @media screen and (min-width: 1440px) {
         #sermon {
+            margin-top: 75px;
             .section-header {
                 .header-row {
                     display: block;

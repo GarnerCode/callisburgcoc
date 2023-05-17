@@ -22,7 +22,7 @@
         --desktop-x-padding: 18rem;
         --border-radius: 5px;
         --transition: ease 0.3s;
-        --box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
     html {
         overflow-x: hidden;
@@ -76,6 +76,7 @@
         }
         main {
             padding: var(--mobile-x-padding);
+            margin-top: 5rem;
         }
         .button {
             border: none;
