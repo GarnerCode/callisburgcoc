@@ -1,8 +1,11 @@
 <template>
     <section id="about">
-        <div class="about-card" v-for="(item, index) of aboutData" :key="index">
+        <div data-aos="fade-up" class="about-card" v-for="(item, index) of aboutData" :key="index" :class="{'alternate': !(index % 2)}">
             <img class="card-img" :src="item.imageUrl" alt="">
-            <p class="card-text">{{ item.text }}</p>
+            <div class="card-text-container">
+                <h2 class="card-title">{{ item.title }}</h2>
+                <p class="card-text">{{ item.text }}</p>
+            </div>
         </div>
     </section>
 </template>
@@ -12,7 +15,7 @@
         #about {
             display: flex;
             flex-direction: column;
-            gap: 5rem;
+            gap: 10rem;
             .about-card {
                 display: flex;
                 flex-direction: column;
@@ -24,6 +27,23 @@
             }
             .card-text {
                 text-align: left;
+            }
+        }
+    }
+    @media screen and (min-width: 768px) {
+        #about {
+            .about-card {
+                flex-direction: row;
+                &.alternate {
+                    flex-direction: row-reverse;
+                }
+            }
+            .card-img {
+                width: 50%;
+            }
+            .card-text {
+                margin-top: 2rem;
+                display: block;
             }
         }
     }
