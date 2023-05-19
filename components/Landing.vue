@@ -5,7 +5,7 @@
             <div class="text">
                 <h1>Welcome to the<br/> <span>Callisburg Church of Christ</span></h1>
                 <p>We are a small country church with a large heart for the Lord and others. Our goal is to reach as many people with the message of Christ as we can from our little corner of the world. We would love to see you and invite you to come spend some time with us!</p>
-                <button class="button">Learn More</button>
+                <NuxtLink class="button" to="/about">Learn More</NuxtLink>
             </div>
         </div>
         <div class="events">

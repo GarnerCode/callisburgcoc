@@ -47,6 +47,7 @@
                 margin: 0 auto;
                 img {
                     width: 100%;
+                    box-shadow: none;
                 }
             }
             .contact {

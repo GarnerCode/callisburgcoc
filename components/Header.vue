@@ -1,35 +1,71 @@
 <template>
-    <header>
-        <NuxtLink to="/" class="logo-container">
-            <img src="assets/logo.svg" alt="Callisburg Church of Christ logo">
-            <div class="logo-text">
-                Callisburg<br/> Church of Christ
+    <div>
+        <Transition name="fade" mode="out-in">
+            <div class="mobile-nav-overlay" v-if="navToggled"></div>
+        </Transition>
+        <header>
+            <NuxtLink to="/" class="logo-container">
+                <img src="assets/logo.svg" alt="Callisburg Church of Christ logo">
+                <div class="logo-text">
+                    Callisburg<br/> Church of Christ
+                </div>
+            </NuxtLink>
+            <ul class="nav-list">
+                <li class="nav-item" v-for="(nav, index) of navData" :key="index">
+                    <NuxtLink :to="nav.route">
+                        {{ nav.label }}
+                    </NuxtLink>
+                </li>
+            </ul>
+            <div class="mobile-nav-toggle" :class="{'toggled': navToggled}" @click="navToggled = !navToggled">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
             </div>
-        </NuxtLink>
-        <ul class="nav-list">
-            <li class="nav-item" v-for="(nav, index) of navData" :key="index">
-                <NuxtLink :to="nav.route">
-                    {{ nav.label }}
-                </NuxtLink>
-            </li>
-        </ul>
-        <div class="mobile-nav-toggle" :class="{'toggled': navToggled}" @click="navToggled = !navToggled">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-    </header>
+            <Transition name="slide" mode="out-in">
+                <div class="mobile-nav-container" v-if="navToggled">
+                    <ul class="mobile-nav-list">
+                        <li @click="navToggled = !navToggled" class="mobile-nav-item" v-for="(nav, index) of navData" :key="index">
+                            <NuxtLink :to="nav.route">
+                                {{ nav.label }}
+                            </NuxtLink>
+                        </li>
+                    </ul>
+                </div>
+            </Transition>
+        </header>
+    </div>
 </template>
 
 <style lang="scss">
     @media screen and (min-width: 0px) {
+        .mobile-nav-overlay {
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            z-index: 5;
+        }
+        .fade-enter, .fade-leave-to {
+            opacity: 0;
+        }
+        .fade-enter-active, .fade-leave-active {
+            transition: all 0.3s ease;
+        }
         header {
-            padding: 2rem var(--mobile-x-padding);
+            padding: 0 var(--mobile-x-padding);
+            height: 10rem;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
             box-shadow: var(--box-shadow);
+            position: relative;
+            z-index: 6;
+            background-color: var(--color-white);
             .logo-container {
                 display: flex;
                 flex-direction: row;
@@ -39,6 +75,7 @@
                 cursor: pointer;
                 img {
                     width: 3.5rem;
+                    box-shadow: none;
                 }
                 .logo-text {
                     font-size: 20px;
@@ -57,6 +94,8 @@
             }
             .mobile-nav-toggle {
                 cursor: pointer;
+                position: relative;
+                z-index: 6;
                 div {
                     width: 25px;
                     height: 3px;
@@ -79,11 +118,41 @@
                     }
                 }
             }
+            .mobile-nav-container {
+                background-color: var(--color-white);
+                position: absolute;
+                top: 10rem;
+                right: 0;
+                z-index: 5;
+                padding: 5rem;
+                padding-top: 2rem;
+                border-bottom-left-radius: var(--border-radius);
+                .mobile-nav-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 3rem;
+                    a {
+                        color: var(--color-black);
+                        text-decoration: none;
+                        font-size: 28px;
+                    }
+                }
+            }
+            .slide-enter, .slide-leave-to {
+                opacity: 0;
+                transform: translateX(5rem);
+            }
+            .slide-enter-active, .slide-leave-active {
+                transition: all 0.3s ease;
+            }
         }
     }
     @media screen and (min-width: 768px) {
         header {
-            padding: 3rem var(--tablet-x-padding);
+            padding: 0 var(--tablet-x-padding);
             .logo-container {
                 img {
                     width: 3rem;
@@ -114,7 +183,7 @@
     }
     @media screen and (min-width: 1440px) {
         header {
-            padding: 2rem var(--desktop-x-padding);
+            padding: 0 var(--desktop-x-padding);
             .logo-container {
                 img {
                     width: 2rem;
