@@ -32,6 +32,7 @@
     }
     @media screen and (min-width: 768px) {
         #about {
+            gap: 20rem;
             .about-card {
                 flex-direction: row;
                 &.alternate {
@@ -47,7 +48,7 @@
             .card-text-container {
                 position: relative;
                 right: 75px;
-                top: 100px;
+                bottom: 100px;
                 background-color:var(--color-primary);
                 box-shadow: var(--box-shadow);
                 height: fit-content;
@@ -69,7 +70,7 @@
     @media screen and (min-width: 1440px) {
         #about {
             .card-text-container {
-                top: 300px;
+                bottom: 80px;
             }
         }
     }
