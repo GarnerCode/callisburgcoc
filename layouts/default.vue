@@ -106,7 +106,6 @@
             color: var(--color-white);
             border-radius: var(--border-radius);
             padding: 2rem 3rem;
-            width: 100%;
             font-size: 18px;
             transition: var(--transition);
             text-decoration: none;
