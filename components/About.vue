@@ -36,14 +36,40 @@
                 flex-direction: row;
                 &.alternate {
                     flex-direction: row-reverse;
+                    .card-text-container {
+                        left: 75px;
+                    }
                 }
             }
             .card-img {
                 width: 50%;
             }
+            .card-text-container {
+                position: relative;
+                right: 75px;
+                top: 100px;
+                background-color:var(--color-primary);
+                box-shadow: var(--box-shadow);
+                height: fit-content;
+                padding: 2rem;
+                border-radius: var(--border-radius);
+            }
             .card-text {
                 margin-top: 2rem;
                 display: block;
+            }
+            .card-title {
+                color: var(--color-white);
+            }
+            .card-text {
+                color: var(--color-gray);
+            }
+        }
+    }
+    @media screen and (min-width: 1440px) {
+        #about {
+            .card-text-container {
+                top: 300px;
             }
         }
     }

@@ -1,11 +1,11 @@
 <template>
     <header>
-        <div class="logo-container">
+        <NuxtLink to="/" class="logo-container">
             <img src="assets/logo.svg" alt="Callisburg Church of Christ logo">
             <div class="logo-text">
                 Callisburg<br/> Church of Christ
             </div>
-        </div>
+        </NuxtLink>
         <ul class="nav-list">
             <li class="nav-item" v-for="(nav, index) of navData" :key="index">
                 <NuxtLink :to="nav.route">
@@ -35,6 +35,7 @@
                 flex-direction: row;
                 align-items: center;
                 gap: 1rem;
+                text-decoration: none;
                 cursor: pointer;
                 img {
                     width: 3.5rem;
@@ -43,6 +44,7 @@
                     font-size: 20px;
                     font-family: var(--font-family-secondary);
                     transition: var(--transition);
+                    color: var(--color-black);
                 }
                 &:hover {
                     .logo-text {

@@ -11,7 +11,7 @@ export const aboutData = [
     },
     {
         title: 'Evening Service',
-        imageUrl: 'assets/images/sundayschool.webp',
-        text: ''
+        imageUrl: 'assets/images/evening.webp',
+        text: 'Join us for our evening service Sundays at 6:30pm for singing and bible study!'
     },
 ]

@@ -4,6 +4,7 @@
         <main>
             <Nuxt />
         </main>
+        <Footer></Footer>
     </div>
 </template>
 
@@ -12,10 +13,9 @@
     :root {
         --color-primary: #007EE5;
         --color-secondary: #65aee9;
-        --color-gray: #CAC0BF;
+        --color-gray: #cccccc;
         --color-black: #1d1d1f;
         --color-white: #fbfbfd;
-        --color-alt-white: #e6e6e6;
         --font-family-primary: 'Roboto', sans-serif;
         --font-family-secondary: 'Roboto Condensed', sans-serif;
         --mobile-x-padding: 2rem;

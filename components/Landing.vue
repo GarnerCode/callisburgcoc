@@ -1,8 +1,6 @@
 <template>
     <section id="landing">
-        <img class="hero hero-mobile" src="assets/images/mobile/exterior.webp" alt="Callisburg Church exterior">
-        <img class="hero hero-tablet" src="assets/images/mobile/exterior.webp" alt="Callisburg Church exterior">
-        <img class="hero hero-desktop" src="assets/images/mobile/exterior.webp" alt="Callisburg Church exterior">
+        <img class="hero" src="assets/images/exterior.webp" alt="Callisburg Church exterior">
         <div class="landing-text">
             <div class="text">
                 <h1>Welcome to the<br/> <span>Callisburg Church of Christ</span></h1>
@@ -36,12 +34,6 @@
                 border-radius: var(--border-radius);
                 opacity: 0;
                 animation: slideUp 0.5s 0.3s ease forwards;
-            }
-            .hero-tablet {
-                display: none;
-            }
-            .hero-desktop {
-                display: none;
             }
             .landing-text {
                 display: flex;
@@ -101,18 +93,13 @@
     @media screen and (min-width: 768px) {
         #landing {
             display: block;
-            .hero-mobile {
-                display: none;
-            }
-            .hero-tablet {
-                display: block;
-            }
             .landing-text {
                 gap: 0;
                 background-color: var(--color-primary);
                 box-shadow: var(--box-shadow);
                 position: absolute;
                 bottom: -250px;
+                left: -25px;
                 width: 50%;
                 padding: 2rem;
                 border-radius: var(--border-radius);
@@ -125,7 +112,7 @@
                 }
             }
             p {
-                color: var(--color-white);
+                color: var(--color-gray);
             }
             .button {
                 margin: 0 auto;
@@ -143,12 +130,7 @@
     }
     @media screen and (min-width: 1440px) {
         #landing {
-            .hero-tablet {
-                display: none;
-            }
-            .hero-desktop {
-                display: block;
-            }
+            margin-bottom: 75px;
             .landing-text {
                 bottom: -75px;
                 left: -75px;
