@@ -45,7 +45,7 @@ export default {
         hideBadge: false, // Hide badge element (v3 & v2 via size=invisible)
         language: 'English',   // Recaptcha language (v2)
         mode: 'base',       // Mode: 'base', 'enterprise'
-        siteKey: process.env.RECAPTCHA_SITE_KEY,    // Site key for requests
+        siteKey: '6LdYPCYmAAAAAIyhYLmTW5JZ6-8asx2CTArCwT5v',    // Site key for requests
         version: 2,    // Version
         size: '200'
       }
