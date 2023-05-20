@@ -32,7 +32,6 @@
                 <input v-model="formData.contact_name" type="text" name="contact-name" placeholder="Name">
                 <input v-model="formData.contact_phone" type="text" name="contact-phone" placeholder="Phone">
             </div>
-            <recaptcha />
             <button class="button">Submit</button>
         </form>
     </div>
@@ -120,7 +119,6 @@
                 } else {
                     console.log('Form has an error :(');
                 }
-                const token = await this.$recaptcha.getResponse();
                 console.log('ReCaptcha token:', token);
             }
         }
