@@ -119,7 +119,6 @@
                 } else {
                     console.log('Form has an error :(');
                 }
-                console.log('ReCaptcha token:', token);
             }
         }
     })
