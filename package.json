@@ -14,6 +14,8 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^2.0.10",
+    "@nuxtjs/recaptcha": "^1.1.2",
+    "@supabase/supabase-js": "^2.22.0",
     "aos": "^2.3.4",
     "core-js": "^3.25.3",
     "nuxt": "^2.15.8",
