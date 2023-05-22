@@ -83,6 +83,9 @@
     .text-highlight {
         color: var(--color-primary);
     }
+    .error {
+        color: red;
+    }
     @media screen and (min-width: 0px) {
         h1 {
             font-size: 36px;
