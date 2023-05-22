@@ -86,6 +86,35 @@
     .error {
         color: red;
     }
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        div {
+            text-align: left;
+            font-size: 16px;
+        }
+    }
+    label {
+        display: block;
+        font-size: 18px;
+        text-align: left;
+        font-weight: bold;
+        span {
+            font-size: 16px;
+            font-style: italic;
+        }
+    }
+    input {
+        padding: 1rem 2rem;
+        font-size: 18px;
+        width: calc(100% - 5rem);
+    }
     @media screen and (min-width: 0px) {
         h1 {
             font-size: 36px;
