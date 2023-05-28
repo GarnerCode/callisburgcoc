@@ -1,5 +1,5 @@
 export const sermonData = {
-    videoUrl: 'https://www.youtube.com/embed/KVL3DEgzRUg',
-    scripture: 'For the grace of God has appeared that offers salvation to all people. It teaches us to say “No” to ungodliness and worldly passions, and to live self-controlled, upright and godly lives in this present age, while we wait for the blessed hope—the appearing of the glory of our great God and Savior, Jesus Christ, who gave himself for us to redeem us from all wickedness and to purify for himself a people that are his very own, eager to do what is good.',
-    verse: '-Titus 2:11-14'
+    videoUrl: 'https://www.youtube.com/embed/yoEvY6hLhqc',
+    scripture: 'I lift up my eyes to the mountains— where does my help come from? My help comes from the Lord, the Maker of heaven and earth. He will not let your foot slip— he who watches over you will not slumber; indeed, he who watches over Israel will neither slumber nor sleep. The Lord watches over you— the Lord is your shade at your right hand; the sun will not harm you by day, nor the moon by night. The Lord will keep you from all harm— he will watch over your life; the Lord will watch over your coming and going both now and forevermore.',
+    verse: '-Psalm 121'
 }
