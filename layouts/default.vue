@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="container">
         <Header></Header>
         <main>
             <Nuxt />
@@ -9,19 +9,19 @@
 </template>
 
 <style lang="scss">
-    @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
     :root {
         --color-primary: #007EE5;
-        --color-secondary: #65aee9;
-        --color-gray: #cccccc;
+        --color-primary-hover: #3696e6;
+        --color-secondary: #0c3957;
+        --color-gray: #bebebe;
         --color-black: #1d1d1f;
         --color-white: #fbfbfd;
-        --font-family-primary: 'Roboto', sans-serif;
-        --font-family-secondary: 'Roboto Condensed', sans-serif;
+        --font-family-primary: 'Poppins', sans-serif;
         --mobile-x-padding: 2rem;
         --tablet-x-padding: 6rem;
-        --desktop-x-padding: 18rem;
-        --border-radius: 10px;
+        --desktop-x-padding: 20rem;
+        --border-radius: 0px;
         --transition: ease 0.3s;
         --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
@@ -43,25 +43,6 @@
             transform: translateY(0);
         }
     }
-    html {
-        overflow-x: hidden;
-        font-size: 62.5%;
-        @media screen and (min-width: 112.5em) {
-            font-size: 75%;
-        }
-        
-        @media screen and (min-width: 85.375em) and (max-width: 75em) {
-            font-size: 56.25%;
-        }
-        
-        @media screen and (max-width: 56.25em) {
-            font-size: 50%;
-        }
-        
-        @media screen and (max-width: 28.125em) {
-            font-size: 45%;
-        }
-    }
     * {
         font-family: var(--font-family-primary);
     }
@@ -70,18 +51,20 @@
         background-color: var(--color-white);
         color: var(--color-black);
     }
+    #container {
+        position: relative;
+        overflow-x: hidden;
+    }
     p {
         margin: 0;
     }
     h1, h2, h3 {
-        font-family: var(--font-family-secondary);
+        font-family: var(--font-family-primary);
+        font-weight: 700;
         margin: 0;
     }
-    img {
-        box-shadow: var(--box-shadow);
-    }
     .text-highlight {
-        color: var(--color-primary);
+        color: var(--color-secondary);
     }
     .error {
         color: red;
@@ -117,45 +100,76 @@
     }
     @media screen and (min-width: 0px) {
         h1 {
-            font-size: 36px;
-        }
-        h2 {
-            font-size: 30px;
-        }
-        h3 {
-            font-size: 24px;
+            font-size: 2.25rem;
         }
         p {
             font-size: 18px;
         }
-        main {
-            padding: var(--mobile-x-padding);
-            margin-top: 5rem;
-        }
+        // main {
+        //     padding: var(--mobile-x-padding);
+        //     margin-top: 5rem;
+        // }
         .button {
             border: none;
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            border-radius: var(--border-radius);
-            padding: 2rem 3rem;
+            padding: 0.5rem 1.5rem;
             font-size: 18px;
             transition: var(--transition);
             text-decoration: none;
             cursor: pointer;
-            &:hover {
-                background-color: var(--color-secondary);
+            &.button-primary {
+                background-color: var(--color-primary);
+                color: var(--color-white);
+                &:hover {
+                    background-color: var(--color-primary-hover);
+                }
             }
+            &.button-secondary {
+                background: none;
+                border: 1px solid var(--color-white);
+                color: var(--color-white);
+                &:hover {
+                    background-color: var(--color-white);
+                    color: var(--color-black);
+                }
+            }
+        }
+        .page-header {
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 155px;
+            position: relative;
+        }
+        .header-content {
+            position: absolute;
+            bottom: 1rem;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: fit-content;
+            z-index: 4;
+            h1 {
+                color: var(--color-white);
+            }
+        }
+        .header-shader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            width: 100%;
+            height: 155px;
+            background-color: var(--color-secondary);
+            opacity: 0.75;
         }
     }
     @media screen and (min-width: 768px) {
-        main {
-            padding: 0 var(--tablet-x-padding);
-        }
+        // main {
+        //     padding: 0 var(--tablet-x-padding);
+        // }
         h1 {
-            font-size: 36px;
+            font-size: 3rem;
         }
         .button {
-            width: 280px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -177,9 +191,14 @@
             }
         }
     }
-    @media screen and (min-width: 1440px) {
-        main {
-            padding: 0 var(--desktop-x-padding);
+    @media screen and (min-width: 1040px) {
+        .page-header, .header-shader {
+            height: 200px;
         }
+    }
+    @media screen and (min-width: 1440px) {
+        // main {
+        //     padding: 0 var(--desktop-x-padding);
+        // }
     }
 </style>

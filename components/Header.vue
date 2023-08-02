@@ -5,10 +5,7 @@
         </Transition>
         <header>
             <NuxtLink to="/" class="logo-container">
-                <img src="assets/logo.svg" alt="Callisburg Church of Christ logo">
-                <div class="logo-text">
-                    Callisburg<br/> Church of Christ
-                </div>
+                <img src="assets/header-logo.svg" alt="Callisburg Church of Christ logo">
             </NuxtLink>
             <ul class="nav-list">
                 <li class="nav-item" v-for="(nav, index) of navData" :key="index">
@@ -41,7 +38,6 @@
     @media screen and (min-width: 0px) {
         .mobile-nav-overlay {
             background-color: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
             position: fixed;
             top: 0;
             left: 0;
@@ -56,37 +52,30 @@
             transition: all 0.3s ease;
         }
         header {
-            padding: 0 var(--mobile-x-padding);
-            height: 10rem;
+            height: 60px;
+            width: calc(100vw - (var(--mobile-x-padding) * 2));
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            box-shadow: var(--box-shadow);
-            position: relative;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
             z-index: 6;
-            background-color: var(--color-white);
+            padding: 0 var(--mobile-x-padding);
             .logo-container {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                gap: 1rem;
+                gap: 0.5rem;
                 text-decoration: none;
+                position: relative;
+                z-index: 4;
                 cursor: pointer;
                 img {
-                    width: 3.5rem;
+                    width: 12rem;
                     box-shadow: none;
-                }
-                .logo-text {
-                    font-size: 20px;
-                    font-family: var(--font-family-secondary);
-                    transition: var(--transition);
-                    color: var(--color-black);
-                }
-                &:hover {
-                    .logo-text {
-                        color: var(--color-primary);
-                    }
                 }
             }
             .nav-list {
@@ -99,7 +88,7 @@
                 div {
                     width: 25px;
                     height: 3px;
-                    background-color: var(--color-black);
+                    background-color: var(--color-white);
                     margin: 5px;
                     transition: all 0.3s ease;
                 }
@@ -121,19 +110,23 @@
             .mobile-nav-container {
                 background-color: var(--color-white);
                 position: absolute;
-                top: 10rem;
+                top: 0;
                 right: 0;
                 z-index: 5;
-                padding: 5rem;
-                padding-top: 2rem;
+                width: 50%;
+                height: 100vh;
                 border-bottom-left-radius: var(--border-radius);
                 .mobile-nav-list {
                     list-style: none;
                     padding: 0;
                     margin: 0;
+                    margin-top: 60px;
                     display: flex;
                     flex-direction: column;
+                    justify-content: space-evenly;
+                    text-align: center;
                     gap: 3rem;
+                    height: calc(100% - 60px);
                     a {
                         color: var(--color-black);
                         text-decoration: none;
@@ -153,11 +146,20 @@
     @media screen and (min-width: 768px) {
         header {
             padding: 0 var(--tablet-x-padding);
+            width: calc(100vw - (var(--tablet-x-padding) * 2));
+            height: 70px;
             .logo-container {
                 img {
-                    width: 3rem;
+                    width: 15rem;
                 }
             }
+            .mobile-nav-container {
+                width: 45%;
+            }
+        }
+    }
+    @media screen and (min-width: 821px) {
+        header {
             .nav-list {
                 display: flex;
                 flex-direction: row;
@@ -168,11 +170,10 @@
                 a {
                     text-decoration: none;
                     font-size: 18px;
-                    font-family: var(--font-family-secondary);
-                    color: var(--color-primary);
+                    color: var(--color-white);
                     transition: var(--transition);
                     &:hover {
-                        color: var(--color-secondary);
+                        color: var(--color-primary);
                     }
                 }
             }
@@ -184,11 +185,7 @@
     @media screen and (min-width: 1440px) {
         header {
             padding: 0 var(--desktop-x-padding);
-            .logo-container {
-                img {
-                    width: 2rem;
-                }
-            }
+            width: calc(100vw - (var(--desktop-x-padding) * 2));
         }
     }
 </style>

@@ -1,21 +1,11 @@
 <template>
     <section id="landing">
-        <img class="hero" src="assets/images/exterior.webp" alt="Callisburg Church exterior">
-        <div class="landing-text">
-            <div class="text">
-                <h1>Welcome to the<br/> <span>Callisburg Church of Christ</span></h1>
-                <p>We are a small country church with a large heart for the Lord and others. Our goal is to reach as many people with the message of Christ as we can from our little corner of the world. We would love to see you and invite you to come spend some time with us!</p>
-                <NuxtLink class="button" to="/about">Learn More</NuxtLink>
-            </div>
-        </div>
-        <div class="events">
-            <h2>Upcoming Events</h2>
-            <div class="events-content">
-                <img src="assets/images/vbs.webp" alt="">
-                <div class="event-text">
-                    <div class="event-title">Vacation Bible School</div>
-                    <p class="event-date">June 27th - June 29th</p>
-                </div>
+        <div class="hero-shader"></div>
+        <div class="section-content">
+            <h1>Worshipping the Lord<br/> <span>From Our Corner of the World</span></h1>
+            <div class="button-row">
+                <NuxtLink class="button button-primary" to="/about">About Us</NuxtLink>
+                <NuxtLink class="button button-secondary" to="/events">Events</NuxtLink>
             </div>
         </div>
     </section>
@@ -24,123 +14,68 @@
 <style lang="scss">
     @media screen and (min-width: 0px) {
         #landing {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
+            height: 100vh;
+            background-image: url('/assets/images/hero-mobile.webp');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: top;
+            background-attachment: fixed;
             position: relative;
-            .hero {
-                width: 100%;
-                box-shadow: var(--box-shadow);
-                border-radius: var(--border-radius);
-                opacity: 0;
-                animation: slideUp 0.5s 0.3s ease forwards;
+            .hero-shader {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100%;
+                background-color: var(--color-secondary);
+                opacity: 0.5;
+                z-index: 3;
             }
-            .landing-text {
+            .section-content {
+                height: 100%;
+                position: relative;
+                z-index: 4;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
-                gap: 10rem;
-                opacity: 0;
-                transform: translateY(200px);
-                animation: slideUp 0.5s 0.5s ease forwards;
-                .text {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    gap: 3rem;
-                    text-align: justify;
-                }
+                justify-content: center;
+                align-items: center;
+                padding: 0 var(--mobile-x-padding);
             }
             h1 {
-                text-align: center;
-                span {
-                    color: var(--color-primary);
-                }
-            }
-            .button {
-                background-color: var(--color-primary);
                 color: var(--color-white);
+                font-size: 1.75rem;
+                text-align: center;
+                line-height: 1.8rem;
+                span {
+                    font-size: 1.25rem;
+                    color: var(--color-gray);
+                }
             }
-            .events {
+            .button-row {
                 display: flex;
-                flex-direction: column;
-                gap: 3rem;
-                margin-top: 7rem;
-                opacity: 0;
-                transform: translateY(200px);
-                animation: slideUp 0.5s 0.7s ease forwards;
-                .events-content {
-                    display: grid;
-                    grid-template-columns: 1fr 2fr;
-                    gap: 1rem;
-                }
-                img {
-                    width: 100%;
-                    border-radius: var(--border-radius);
-                }
-                .event-title {
-                    font-size: 20px;
-                    font-weight: bold;
-                }
-                .event-date {
-                    font-style: italic;
-                    font-size: 14px;
-                    color: var(--color-black);
-                }
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 2rem;
+                margin-top: 1rem;
             }
         }
     }
     @media screen and (min-width: 768px) {
         #landing {
-            display: block;
-            .landing-text {
-                gap: 0;
-                background-color: var(--color-primary);
-                box-shadow: var(--box-shadow);
-                position: absolute;
-                bottom: -250px;
-                left: -25px;
-                width: 50%;
-                padding: 2rem;
-                border-radius: var(--border-radius);
-            }
+            background-image: url('/assets/images/hero-tablet.webp');
             h1 {
-                text-align: left;
-                color: var(--color-white);
+                font-size: 3rem;
+                line-height: 3rem;
                 span {
-                    color: var(--color-white);
+                    font-size: 2.25rem;
                 }
             }
-            p {
-                color: var(--color-gray);
-            }
-            .button {
-                margin: 0 auto;
-                background-color: var(--color-white);
-                color: var(--color-primary);
-            }
-            .events {
-                margin: 0;
-                margin-top: 2rem;
-                position: absolute;
-                right: 0;
-                width: calc(50% - 6rem);
-            }
         }
     }
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 820px) {
         #landing {
-            margin-bottom: 75px;
-            .landing-text {
-                bottom: -75px;
-                left: -75px;
-            }
-            h1 {
-                text-align: left;
-            }
-            .button {
-                margin: 0;
-            }
+            background-image: url('/assets/images/hero-desktop.webp');
         }
     }
+    
 </style>

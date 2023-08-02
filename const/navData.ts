@@ -15,8 +15,4 @@ export const navData = [
         label: 'Contact',
         route: '/contact',
     },
-    {
-        label: 'Register',
-        route: '/register',
-    },
 ]

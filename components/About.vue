@@ -1,10 +1,30 @@
 <template>
-    <section id="about">
-        <div data-aos="fade-up" class="about-card" v-for="(item, index) of aboutData" :key="index" :class="{'alternate': !(index % 2)}">
-            <img class="card-img" :src="item.imageUrl" alt="">
-            <div class="card-text-container">
-                <h2 class="card-title">{{ item.title }}</h2>
-                <p class="card-text">{{ item.text }}</p>
+    <section data-aos="fade-up" id="about">
+        <div class="section-content">
+            <div class="column">
+                <img src="/assets/location.svg" alt="" width="80px" height="80px">
+                <h2>Location</h2>
+                <p>308 McDaniel St Callisburg, TX 76241</p>
+            </div>
+            <div class="column">
+                <img src="/assets/clock.svg" alt="" width="80px" height="80px">
+                <h2>Service Times</h2>
+                <div class="times">
+                    <div class="time">
+                        <h3>Sundays</h3>
+                        <p>10:30am - 12:00pm<br/>6:00pm - 7:00pm</p>
+                    </div>
+                    <div class="time">
+                        <h3>Wednesdays</h3>
+                        <p>7:00pm - 8:00pm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <img src="/assets/email.svg" alt="" width="80px" height="80px">
+                <h2>Contact</h2>
+                <p>940-634-2250</p>
+                <p>1lostdog@sbcglobal.net</p>
             </div>
         </div>
     </section>
@@ -13,79 +33,54 @@
 <style lang="scss">
     @media screen and (min-width: 0px) {
         #about {
-            display: flex;
-            flex-direction: column;
-            gap: 10rem;
-            .about-card {
+            padding: 100px var(--mobile-x-padding);
+            .section-content {
                 display: flex;
                 flex-direction: column;
-                gap: 3rem;
+                gap: 5rem;
             }
-            .card-img {
-                width: 100%;
-                border-radius: var(--border-radius);
+            img {
+                display: block;
+                margin: 0 auto;
             }
-            .card-text {
-                text-align: left;
+            h2 {
+                text-align: center;
+                margin: 1rem 0;
+            }
+            h3 {
+                font-weight: normal;
+                text-align: center;
+            }
+            p {
+                text-align: center;
+            }
+            .times {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     }
     @media screen and (min-width: 768px) {
         #about {
-            gap: 20rem;
-            .about-card {
+            padding: 100px var(--tablet-x-padding);
+        }
+    }
+    @media screen and (min-width: 1220px) {
+        #about {
+            .section-content {
                 flex-direction: row;
-                &.alternate {
-                    flex-direction: row-reverse;
-                    .card-text-container {
-                        left: 75px;
-                    }
+                justify-content: space-between;
+                gap: 0;
+                .column {
+                    width: 33%;
                 }
-            }
-            .card-img {
-                width: 50%;
-            }
-            .card-text-container {
-                position: relative;
-                right: 75px;
-                bottom: 100px;
-                background-color:var(--color-primary);
-                box-shadow: var(--box-shadow);
-                height: fit-content;
-                padding: 2rem;
-                border-radius: var(--border-radius);
-            }
-            .card-text {
-                margin-top: 2rem;
-                display: block;
-            }
-            .card-title {
-                color: var(--color-white);
-            }
-            .card-text {
-                color: var(--color-gray);
             }
         }
     }
     @media screen and (min-width: 1440px) {
         #about {
-            .card-text-container {
-                bottom: 80px;
-            }
+            padding: 100px var(--desktop-x-padding);
         }
     }
 </style>
-
-<script lang="ts">
-    import { defineComponent } from 'vue';
-    import { aboutData } from '~/const/aboutData';
-
-    export default defineComponent({
-        name: 'About',
-        data: () => {
-            return {
-                aboutData,
-            }
-        }
-    })
-</script>

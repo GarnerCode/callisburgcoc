@@ -1,53 +1,18 @@
 <template>
     <div id="admin-page">
-        <div class="admin-header" v-if="authorized && !loading && db">
-            <div class="message">VBS 2023 Registrants</div>
-            <button @click="handleSignout()" class="button">Signout</button>
+        <div class="header-backdrop"></div>
+        <div class="admin-header" v-if="authorized && !loading">
+            <div class="message">Admin Control Panel</div>
+            <button @click="handleSignout()" class="button button-primary">Signout</button>
         </div>
-        <div class="message" v-if="!authorized">Authorizing session...</div>
-        <div class="message" v-if="authorized && loading">Loading...</div>
-        <div class="filters" v-if="authorized && !loading && db">
-            <div class="filter">
-                <label for="filterAllergy">Display Only Registrants with Allergies</label>
-                <input type="checkbox" v-model="toggleAllergies">
-            </div>
-        </div>
-        <div v-if="authorized && !loading && db" class="db-container">
-            <div :class="{'has-allergy': item.allergies && item.allergies !== ''}" class="db-item" v-for="(item, index) of filteredDb" :key="index">
-                <div class="field">
-                    <div class="item-label">Name(s)</div>
-                    <div class="item-value">{{ item.child_name }}</div>
-                </div>
-                <div class="field">
-                    <div class="item-label">Age & Grade</div>
-                    <div class="item-value">{{ item.child_age }}</div>
-                </div>
-                <div class="field">
-                    <div class="item-label">Address</div>
-                    <div class="item-value">{{ item.address }}</div>
-                </div>
-                <div class="field">
-                    <div class="item-label">City</div>
-                    <div class="item-value">{{ item.city }}</div>
-                </div>
-                <div class="field">
-                    <div class="item-label">Zipcode</div>
-                    <div class="item-value">{{ item.zip }}</div>
-                </div>
-                <div class="field">
-                    <div class="item-label">Allergies</div>
-                    <div class="item-value allergy" v-if="item.allergies && item.allergies !== ''">{{ item.allergies }}</div>
-                    <div class="item-value" v-if="!item.allergies || item.allergies === ''">None Provided</div>
-                </div>
-                <div class="field">
-                    <div class="item-label">Emergency Contact Name</div>
-                    <div class="item-value">{{ item.contact_name }}</div>
-                </div>
-                <div class="field">
-                    <div class="item-label">Emergency Contact Phone</div>
-                    <div class="item-value">{{ item.contact_phone }}</div>
-                </div>
-            </div>
+        <div v-if="authorized" class="sermon-container">
+            <div class="message">Edit Sermon</div>
+            <form class="edit-sermon" @submit="(e) => uploadSermon(e)">
+                <textarea v-model="sermonData.scripture" name="sermon-text" placeholder="Scripture"></textarea>
+                <input v-model="sermonData.verse" type="text" name="sermon-verse" placeholder="Verse">
+                <input v-model="sermonData.videoUrl" type="text" name="sermon-video" placeholder="YouTube URL">
+                <input class="button button-primary" type="submit" value="Submit">
+            </form>
         </div>
     </div>
 </template>
@@ -58,19 +23,43 @@
             display: flex;
             flex-direction: column;
             gap: 3rem;
+            padding: 0 var(--mobile-x-padding);
+            min-height: 100vh;
+            margin-bottom: 100px;
+            .header-backdrop {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 60px;
+                background-color: var(--color-secondary);
+                z-index: 3;
+            }
             .admin-header {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
-                margin-bottom: 10rem;
+                margin-top: 160px;
                 .message {
                     font-weight: bold;
                 }
             }
             .message {
                 font-size: 18px;
-                text-align: center;
+                font-weight: bold;
+                text-align: left;
+            }
+            .edit-sermon {
+                input, textarea {
+                    padding: 0.5rem 1rem;
+                    font-size: 16px;
+                    width: calc(100% - 2rem);
+                }
+                textarea {
+                    height: 250px;
+                    resize: none;
+                }
             }
             .filter {
                 display: flex;
@@ -121,11 +110,28 @@
             }
         }
     }
+    @media screen and (min-width: 768px) {
+        #admin-page {
+            padding: 0 var(--tablet-x-padding);
+            .edit-sermon {
+                width: 500px;
+                .button {
+                    width: 280px;
+                }
+            }
+        }
+    }
+    @media screen and (min-width: 1440px) {
+        #admin-page {
+            padding: 0 var(--desktop-x-padding);
+        }
+    }
 </style>
 
 <script lang="ts">
     import { defineComponent } from 'vue';
     import { supabase } from '~/lib/supabase';
+    import { Sermon } from '~/model/Sermon.interface';
 
     export default defineComponent({
         name: 'AdminPage',
@@ -137,6 +143,12 @@
                 db: null,
                 filteredDb: null,
                 toggleAllergies: false,
+                sermonData: {
+                    scripture: '',
+                    verse: '',
+                    videoUrl: ''
+                } as Sermon,
+                eventsData: null as any,
             }
         },
         watch: {
@@ -164,17 +176,46 @@
             }
         },
         methods: {
+            // async fetchData(): Promise<void> {
+            //     const { data, error } = await supabase
+            //     .from('vbs-registrants')
+            //     .select()
+            //     if (data) {
+            //         data.sort((a: any, b: any) => {
+            //             return a.child_name.localeCompare(b.child_name);
+            //         });
+            //         this.db = data;
+            //         this.filteredDb = data;
+            //         this.loading = false;
+            //     }
+            // },
             async fetchData(): Promise<void> {
                 const { data, error } = await supabase
-                .from('vbs-registrants')
-                .select()
+                .from('sermons')
+                .select();
                 if (data) {
-                    data.sort((a: any, b: any) => {
-                        return a.child_name.localeCompare(b.child_name);
-                    });
-                    this.db = data;
-                    this.filteredDb = data;
+                    console.log('fetched data: ', data);
+                    this.sermonData.scripture = data[0].scripture;
+                    this.sermonData.verse = data[0].verse;
+                    this.sermonData.videoUrl = data[0].videoUrl;
                     this.loading = false;
+                }
+            },
+            async uploadSermon(e: any): Promise<void> {
+                e.preventDefault();
+                console.log('sermonData: ', this.sermonData);
+                const { error } = await supabase
+                .from('sermons')
+                .update({
+                    scripture: this.sermonData.scripture,
+                    verse: this.sermonData.verse,
+                    videoUrl: this.sermonData.videoUrl
+                })
+                .eq('id', 1);
+                if (error) {
+                    console.log('There was an error, ', error);
+                } else {
+                    await this.fetchData();
                 }
             },
             async handleSignout(): Promise<void> {

@@ -1,8 +1,7 @@
 <template>
     <section data-aos="fade-up" id="sermon">
         <div class="section-header">
-            <h2 class="text-highlight">Watch Last Sunday's Sermon</h2>
-            <div class="header-row"></div>
+            <h2>Last Sunday's Sermon</h2>
         </div>
         <div class="sermon-content">
             <iframe
@@ -24,19 +23,9 @@
 <style lang="scss">
     @media screen and (min-width: 0px) {
         #sermon {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            .section-header {
-                .header-row {
-                    height: 1px;
-                    width: 100%;
-                    background-color: var(--color-primary);
-                    display: none;
-                }
-            }
+            padding: 100px var(--mobile-x-padding);
             h2 {
-                text-align: center;
+                margin-bottom: 3rem;
             }
             iframe {
                 aspect-ratio: 16 / 9;
@@ -58,21 +47,7 @@
     }
     @media screen and (min-width: 768px) {
         #sermon {
-            margin-top: 250px;
-            .section-header {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-            h2 {
-                text-align: left;
-            }
-            .sermon-content {
-                display: flex;
-                flex-direction: row-reverse;
-                gap: 5rem;
-            }
+            padding: 100px var(--tablet-x-padding);
             .sermon-text {
                 width: 550px;
                 display: flex;
@@ -81,20 +56,24 @@
             }
         }
     }
+    @media screen and (min-width: 1000px) {
+        #sermon {
+            .sermon-content {
+                flex-direction: row;
+            }
+            iframe {
+                height: fit-content;
+            }
+        }
+    }
     @media screen and (min-width: 1440px) {
         #sermon {
-            margin-top: 75px;
-            .section-header {
-                .header-row {
-                    display: block;
-                    width: 650px;
-                }
-            }
+            padding: 100px var(--desktop-x-padding);
             iframe {
                 width: 650px;
             }
             .sermon-text {
-                width: calc(100% - 650px - 5rem);
+                max-width: 450px;
             }
         }
     }

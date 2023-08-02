@@ -36,14 +36,12 @@
     @media screen and (min-width: 0px) {
         footer {
             padding: 2rem var(--mobile-x-padding);
-            background-color: var(--color-white);
-            box-shadow: var(--box-shadow);
+            background-color: #0c3957;
             display: flex;
             flex-direction: column;
             gap: 3rem;
-            margin-top: 20rem;
             .logo {
-                width: 80%;
+                width: 250px;
                 margin: 0 auto;
                 img {
                     width: 100%;
@@ -53,21 +51,23 @@
             .contact {
                 display: flex;
                 flex-direction: column;
-                gap: 3rem;
+                gap: 1rem;
                 width: fit-content;
                 margin: 0 auto;
             }
             .contact-item {
                 display: flex;
                 flex-direction: row;
-                gap: 3rem;
+                gap: 1rem;
                 align-items: center;
             }
             .contact-icon {
                 font-size: 26px;
+                color: var(--color-gray);
             }
             .contact-text {
                 font-size: 16px;
+                color: var(--color-white);
             }
             .social {
                 display: flex;
@@ -76,27 +76,39 @@
                 gap: 3rem;
             }
             .social-link {
-                color: var(--color-black);
+                color: var(--color-white);
                 font-size: 26px;
             }
         }
     }
     @media screen and (min-width: 768px) {
         footer {
-            flex-direction: row;
             padding: 2rem var(--tablet-x-padding);
-            .logo {
-                width: 33%;
-                margin: 0;
-            }
             .social {
-                align-items: flex-end;
+                align-items: center;
+            }
+        }
+    }
+    @media screen and (min-width: 850px) {
+        footer {
+            flex-direction: row;
+            .logo {
+                margin: 0;
             }
         }
     }
     @media screen and (min-width: 1440px) {
         footer {
             padding: 2rem var(--desktop-x-padding);
+        }
+    }
+    @media screen and (min-width: 1600px) {
+        footer {
+            .contact {
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 3rem;
+            }
         }
     }
 </style>

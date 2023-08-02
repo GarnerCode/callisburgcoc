@@ -1,9 +1,33 @@
 <template>
     <div id="about-page">
-        <img class="about-img" src="assets/images/sign.webp" alt="Callisburg Church of Christ sign on road">
-        <div class="about-text">
-            <h1>About Us</h1>
-            <p>We are located at 308 McDaniel St in Callisburg, Texas. Each Sunday, we have Sunday School available for all ages starting at 9:30am, followed by our morning worship services starting at 10:30am. We later have our evening worship services starting at 6:00pm.</p>
+        <div class="page-header">
+            <div class="header-content">
+                <h1>About Us</h1>
+            </div>
+        </div>
+        <div class="header-shader"></div>
+        <div class="page-content">
+            <section>
+                <img src="assets/images/sundayschool.webp" alt="" width="311px" height="241.88px">
+                <div class="text">
+                    <h2>Sunday School</h2>
+                    <p>We have different Sunday School classes for all ages starting at 9:30. Come join us before our morning services to hear engaging lessons from the bible!</p>
+                </div>
+            </section>
+            <section class="row-reverse">
+                <img src="assets/images/morningsermon.webp" alt="" width="311px" height="241.88px">
+                <div class="text">
+                    <h2>Morning Sermon</h2>
+                    <p>Our Sunday Morning services begin at 10:30am. Take part with us in singing, prayer, and worship!</p>
+                </div>
+            </section>
+            <section>
+                <img src="assets/images/evening.webp" alt="" width="311px" height="241.88px">
+                <div class="text">
+                    <h2>Evening Services</h2>
+                    <p>Come back at 6:30pm Sunday nights for singing and bible study!</p>
+                </div>
+            </section>
         </div>
     </div>
 </template>
@@ -11,35 +35,53 @@
 <style lang="scss">
     @media screen and (min-width: 0px) {
         #about-page {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            .about-text {
-                display: flex;
-                flex-direction: column;
-                gap: 3rem;
+            .page-header {
+                background-image: url('/assets/images/about.webp');
             }
-            .about-img {
-                border-radius: var(--border-radius);
+            section {
+                padding: 100px var(--mobile-x-padding);
+            }
+            img {
+                border-radius: 15px;
+            }
+            h2 {
+                margin: 1rem 0;
+                text-align: center;
             }
         }
     }
     @media screen and (min-width: 768px) {
         #about-page {
-            .about-text {
-                width: 50%;
-                background-color: var(--color-primary);
-                padding: 2rem;
-                border-radius: var(--border-radius);
-                position: relative;
-                bottom: 150px;
-                right: 25px;
-                h1 {
-                    color: var(--color-white);
+            section {
+                padding: 100px var(--tablet-x-padding);
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 2rem;
+                &.row-reverse {
+                    flex-direction: row-reverse;
                 }
-                p {
-                    color: var(--color-gray);
-                }
+            }
+            h2 {
+                text-align: left;
+            }
+        }
+    }
+    @media screen and (min-width: 1040px) {
+        #about-page {
+            .page-header {
+                background-position-y: -100px;
+            }
+            img {
+                width: 25rem;
+                height: auto;
+            }
+        }
+    }
+    @media screen and (min-width: 1440px) {
+        #about-page {
+            section {
+                padding: 100px var(--desktop-x-padding);
             }
         }
     }
