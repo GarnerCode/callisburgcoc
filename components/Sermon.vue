@@ -1,5 +1,5 @@
 <template>
-    <section data-aos="fade-up" id="sermon">
+    <section data-aos="fade-up" id="sermon" v-if="sermonData">
         <div class="section-header">
             <h2>Last Sunday's Sermon</h2>
         </div>
@@ -31,6 +31,7 @@
                 aspect-ratio: 16 / 9;
                 width: 100%;
                 border-radius: var(--border-radius);
+                box-shadow: var(--box-shadow);
             }
             .sermon-content {
                 display: flex;
@@ -81,13 +82,29 @@
 
 <script lang="ts">
     import { defineComponent } from 'vue';
-    import { sermonData } from '~/const/sermonData';
+    import { supabase } from '~/lib/supabase';
+    // import { sermonData } from '~/const/sermonData';
 
     export default defineComponent({
         name: 'Sermon',
         data: () => {
             return {
-                sermonData,
+                sermonData: null,
+            }
+        },
+        async mounted() {
+            await this.fetchSermon();
+        },
+        methods: {
+            async fetchSermon(): Promise<void> {
+                const { data, error } = await supabase
+                .from('sermons')
+                .select();
+                if (data) {
+                    this.sermonData = data[0];
+                } else {
+                    console.error(error);
+                }
             }
         }
     })

@@ -1,6 +1,6 @@
 <template>
-    <section data-aos="fade-up" id="about">
-        <div class="section-content">
+    <section id="about">
+        <div class="section-content" data-aos="fade-up">
             <div class="column">
                 <img src="/assets/location.svg" alt="" width="80px" height="80px">
                 <h2>Location</h2>
@@ -34,6 +34,7 @@
     @media screen and (min-width: 0px) {
         #about {
             padding: 100px var(--mobile-x-padding);
+            background-color: var(--color-tertiary);
             .section-content {
                 display: flex;
                 flex-direction: column;

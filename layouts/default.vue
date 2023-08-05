@@ -14,6 +14,7 @@
         --color-primary: #007EE5;
         --color-primary-hover: #3696e6;
         --color-secondary: #0c3957;
+        --color-tertiary: #b7cddf;
         --color-gray: #bebebe;
         --color-black: #1d1d1f;
         --color-white: #fbfbfd;
@@ -23,7 +24,7 @@
         --desktop-x-padding: 20rem;
         --border-radius: 0px;
         --transition: ease 0.3s;
-        --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        --box-shadow: 0 0 25px 15px rgba(110, 110, 110, 0.1)
     }
     @keyframes fadeIn {
         from {

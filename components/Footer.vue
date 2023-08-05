@@ -36,7 +36,7 @@
     @media screen and (min-width: 0px) {
         footer {
             padding: 2rem var(--mobile-x-padding);
-            background-color: #0c3957;
+            background-color: var(--color-tertiary);
             display: flex;
             flex-direction: column;
             gap: 3rem;
@@ -63,11 +63,11 @@
             }
             .contact-icon {
                 font-size: 26px;
-                color: var(--color-gray);
+                color: var(--color-primary);
             }
             .contact-text {
                 font-size: 16px;
-                color: var(--color-white);
+                color: var(--color-black);
             }
             .social {
                 display: flex;
@@ -76,8 +76,12 @@
                 gap: 3rem;
             }
             .social-link {
-                color: var(--color-white);
+                color: var(--color-black);
                 font-size: 26px;
+                transition: var(--transition);
+                &:hover {
+                    color: var(--color-primary);
+                }
             }
         }
     }

@@ -6,7 +6,12 @@
             <button @click="handleSignout()" class="button button-primary">Signout</button>
         </div>
         <div v-if="authorized" class="sermon-container">
-            <div class="message">Edit Sermon</div>
+            <div class="message">
+                <div class="label">Edit Sermon</div>
+                <div class="status" :class="{'success': this.status.success, 'error': !this.status.success}">
+                    {{ status.message }}
+                </div>
+            </div>
             <form class="edit-sermon" @submit="(e) => uploadSermon(e)">
                 <textarea v-model="sermonData.scripture" name="sermon-text" placeholder="Scripture"></textarea>
                 <input v-model="sermonData.verse" type="text" name="sermon-verse" placeholder="Verse">
@@ -49,6 +54,17 @@
                 font-size: 18px;
                 font-weight: bold;
                 text-align: left;
+                display: flex;
+                flex-direction: row;
+                gap: 3rem;
+                .status {
+                    &.success {
+                        color: #1a8f1a;
+                    }
+                    &.error {
+                        color: #ca1a1a;
+                    }
+                }
             }
             .edit-sermon {
                 input, textarea {
@@ -144,11 +160,18 @@
                 filteredDb: null,
                 toggleAllergies: false,
                 sermonData: {
+                    id: 1,
+                    created_at: new Date(),
                     scripture: '',
                     verse: '',
-                    videoUrl: ''
+                    videoUrl: '',
+                    email: '1lostdog@sbcglobal.net',
                 } as Sermon,
                 eventsData: null as any,
+                status: {
+                    success: false,
+                    message: '',
+                }
             }
         },
         watch: {
@@ -176,19 +199,6 @@
             }
         },
         methods: {
-            // async fetchData(): Promise<void> {
-            //     const { data, error } = await supabase
-            //     .from('vbs-registrants')
-            //     .select()
-            //     if (data) {
-            //         data.sort((a: any, b: any) => {
-            //             return a.child_name.localeCompare(b.child_name);
-            //         });
-            //         this.db = data;
-            //         this.filteredDb = data;
-            //         this.loading = false;
-            //     }
-            // },
             async fetchData(): Promise<void> {
                 const { data, error } = await supabase
                 .from('sermons')
@@ -203,19 +213,19 @@
             },
             async uploadSermon(e: any): Promise<void> {
                 e.preventDefault();
-                console.log('sermonData: ', this.sermonData);
+                this.status.message = '';
                 const { error } = await supabase
                 .from('sermons')
-                .update({
-                    scripture: this.sermonData.scripture,
-                    verse: this.sermonData.verse,
-                    videoUrl: this.sermonData.videoUrl
-                })
-                .eq('id', 1);
+                .update(this.sermonData)
+                .eq('id', this.sermonData.id);
                 if (error) {
                     console.log('There was an error, ', error);
+                    this.status.message = 'Error updating sermon';
+                    this.status.success = false;
                 } else {
                     await this.fetchData();
+                    this.status.message = 'Sermon updated!';
+                    this.status.success = true;
                 }
             },
             async handleSignout(): Promise<void> {
