@@ -40,7 +40,6 @@
             .event {
                 img {
                     width: 100%;
-                    border-radius: 15px;
                 }
                 .row {
                     margin-bottom: 1rem;

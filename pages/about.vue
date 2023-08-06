@@ -42,7 +42,7 @@
                 padding: 100px var(--mobile-x-padding);
             }
             img {
-                border-radius: 15px;
+                border-radius: var(--border-radius);
             }
             h2 {
                 margin: 1rem 0;

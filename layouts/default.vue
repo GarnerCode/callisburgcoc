@@ -22,7 +22,7 @@
         --mobile-x-padding: 2rem;
         --tablet-x-padding: 6rem;
         --desktop-x-padding: 20rem;
-        --border-radius: 0px;
+        --border-radius: 10px;
         --transition: ease 0.3s;
         --box-shadow: 0 0 25px 15px rgba(110, 110, 110, 0.1)
     }
